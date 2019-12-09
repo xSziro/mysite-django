@@ -17,11 +17,11 @@ class Game(models.Model):
     country = models.CharField(max_length = 30)
     
 class Comment(models.Model):
-    user_id =  models.Foreign(User,on_delete = models.Cascade)
-    id =  models.Foreign(User,on_delete = models.Cascade)
+    user_id =  models.ForeignKey(User,on_delete = models.CASCADE)
+    game_id =  models.ForeignKey(Game,on_delete = models.CASCADE)
     text = models.CharField(max_length = 400)
 
 class Vote(models.Model):
-    user_id =  models.Foreign(User,on_delete = models.Cascade)
-    game_id =  models.Foreign(User,on_delete = models.Cascade)
+    user_id =  models.ForeignKey(User,on_delete = models.CASCADE)
+    game_id =  models.ForeignKey(Game,on_delete = models.CASCADE)
     vote = models.IntegerField(default = 0)
